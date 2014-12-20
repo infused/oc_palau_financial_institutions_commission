@@ -11,18 +11,20 @@ urls = {
 urls.each do |category, url|
   agent = Mechanize.new
   page = agent.get(url)
-  # page.search('.banks_list_cont .banks_list_desc').each do |bank|
-  #   data = {
-  #     company_name: bank.search('a.bank_name').text.strip,
-  #     organization_head: bank.to_s.match(/<b>Organization Head:<\/b>([^<]*)/m) ? $1.strip : nil,
-  #     address: bank.to_s.match(/<b>Address:<\/b>([^<]*)/) ? $1.strip : nil,
-  #     branch: bank.to_s.match(/<b>Branch:<\/b>([^<]*)/) ? $1.strip : nil,
-  #     contact: bank.to_s.match(/<b>Contact:<\/b>([^<]*)/) ? $1.strip : nil,
-  #     category: category,
-  #     source_url: url,
-  #     sample_date: Time.now
-  #   }
-  #
-  #   puts JSON.dump(data)
+  page.search('#approved-banks').each do |bank|
+    info = bank.search('#bank-info').text.split("\n").map {|s| s.strip}
+
+    data = {
+      company_name: bank.search('#bank-name img').attr('alt'),
+      address: info[0, 2].join(', '),
+      telephone: info[2].gsub('Tel: ', ''),
+      fax: info[3].gsub('Fax: ', ''),
+      url: info[4],
+      category: category,
+      source_url: url,
+      sample_date: Time.now
+    }
+
+    puts JSON.dump(data)
   end
 end

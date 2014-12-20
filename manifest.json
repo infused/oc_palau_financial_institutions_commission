@@ -24,10 +24,4 @@
     "terms": "unknown",
     "terms_url": "unknown"
   }
-  /*,
-  "transformers": [{
-    "file": "licence_transformer.rb",
-    "data_type": "simple-licence",
-    "identifying_fields": ["company_name"]
-    }]
-  }*/
+}
