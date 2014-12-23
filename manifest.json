@@ -3,7 +3,7 @@
   "title": "Palau Financial Institutions Commission",
   "description": "Scape financial organizations for Palau Financial Institutions Commission",
   "author": "Keith Morrison <keithm@infused.org>",
-  "repository": "https://github.com/infused/oc_palau_financial_institutions_commission",
+  "public_repository": "https://github.com/infused/oc_palau_financial_institutions_commission",
   "language": "ruby",
   "tags": ["bot", "Palau", "world-finance-licences", "easy", "mapthebanks"],
   "data_type": "primary data",
